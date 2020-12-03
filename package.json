@@ -1,0 +1,33 @@
+{
+  "author": "Jakob Kjaer <jakob.m.kjaer@gmail.com>",
+  "name": "nyc-middleware",
+  "description": "Connect middleware for NYC to handle server-side as well as browser coverage use-cases for node apps",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:uzkjaer/nyc-middleware.git"
+  },
+  "scripts": {
+    "pretest": "jshint --config ./.jshintrc lib/*js",
+    "test": "./test/run.sh"
+  },
+  "contributors": [
+  ],
+  "dependencies": {
+    "archiver": "*",
+    "body-parser": "*",
+    "express": "*",
+    "nyc": "*"
+  },
+  "devDependencies": {
+    "async": "*",
+    "jshint": "*",
+    "mkdirp": "*",
+    "rimraf": "*",
+    "yui-lint": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "license": "MIT"
+}
