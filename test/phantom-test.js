@@ -1,6 +1,5 @@
 /*global phantom, window,document,$ */
-var system = require('system'),
-    page = require('webpage').create(),
+var page = require('webpage').create(),
     port = 8888,
     baseUrl = 'http://localhost:' + port,
     tests = [];

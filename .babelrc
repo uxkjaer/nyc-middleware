@@ -1,0 +1,4 @@
+{
+    "presets": ["@babel/env", "..., etc."],
+    "plugins": ["istanbul"]
+}
