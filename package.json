@@ -2,7 +2,7 @@
   "author": "Jakob Kjaer <jakob.m.kjaer@gmail.com>",
   "name": "nyc-middleware",
   "description": "Connect middleware for NYC to handle server-side as well as browser coverage use-cases for node apps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:uxkjaer/nyc-middleware.git"
