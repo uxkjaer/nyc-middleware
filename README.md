@@ -1,14 +1,11 @@
-istanbul-middleware
+nyc-middleware
 ===================
 
-[![Build Status](https://travis-ci.org/gotwarlost/istanbul-middleware.png?branch=master)](https://travis-ci.org/gotwarlost/istanbul-middleware) [![Dependency Status](https://gemnasium.com/gotwarlost/istanbul-middleware.png)](https://gemnasium.com/gotwarlost/istanbul-middleware)
+This package was inspired by the istanbul-middleware and most of the code is from this package. It's simply been ported to support NYC.
 
-Connect middleware for getting code coverage numbers in functional tests for nodejs apps using istanbul.
+Connect middleware for getting code coverage numbers in functional tests for nodejs apps using istanbul version 2.
 
 Run the sample app at `test/app` to get a feel for how this works.
-
-All of this is experimental and is known to work for narrow use-cases such as an express3 app. YMMV.
-
 Server-side code coverage
 -------------------------
 
@@ -20,7 +17,7 @@ This involves:
 * allowing users to download coverage reports after tests have run
 
 ```javascript
-var im = require('istanbul-middleware'),
+var im = require('nyc-middleware'),
     isCoverageEnabled = (process.env.COVERAGE == "true"); // or a mechanism of your choice
 
 //before your code is require()-ed, hook the loader for coverage
@@ -97,11 +94,10 @@ This involves:
 using the `window.__coverage__` object. You need to figure out how to do this using your favorite test runner.
 * Aggregating the client and server coverage numbers. This is automatically done for you by the server-side middleware.
 
-The API for this is _highly_ experimental given the number of moving parts. But, it roughly looks like this:
 
 ```javascript
 var path = require('path'),
-    im = require('istanbul-middleware');
+    im = require('nyc-middleware');
 
 // do the server side stuff as described above
 
@@ -136,7 +132,7 @@ app.use(function (req, res, next) {
 API
 ---
 
-### `istanbulMiddleware.hookLoader(rootOrMatcher, instrumenterOpts)`
+### `nycMiddleware.hookLoader(rootOrMatcher, instrumenterOpts)`
 
 hooks `require` for coverage using istanbul.
 
@@ -151,7 +147,7 @@ API docs in istanbul for more information. In addition, options can also contain
 passed to `istanbul.hook.hookRequire()`
 
 
-### `istanbulMiddleware.createHandler(opts)`
+### `nycMiddleware.createHandler(opts)`
 
 returns connect middleware that exposes additional endpoints for coverage. Endpoints exposed are documented in the summary.
 
@@ -159,7 +155,7 @@ returns connect middleware that exposes additional endpoints for coverage. Endpo
 
 * `resetOnGet` - boolean to allow resets of coverage to baseline numbers using `GET` in addition to `POST`
 
-### `istanbulMiddleware.createClientHandler(root, opts)`
+### `nycMiddleware.createClientHandler(root, opts)`
 
 returns connect middleware similar to the `static` middleware to return instrumented JS to the client.
 The default behavior of the middleware is to intercept all `GET` requests to Javascript files and return the
@@ -185,16 +181,10 @@ function ignoreFrameworks(req) {
 For all other cases where the client handler provided by this library is not good enough, just write your own
 middleware as documented in the summary.
 
-### `istanbulMiddleware.getInstrumenter()`
+### `nycMiddleware.getInstrumenter()`
 
 returns the instrumenter object that is created as a side-effect of the `hookLoader` call. Useful for custom
 client-side instrumentation to ensure that the instrumentation is done with the same options for all code.
 
-Third-party libraries
----------------------
 
-The following third-party libraries are used by this module:
-
-* express: https://github.com/visionmedia/express -  to implement the middleware
-* archiver: https://github.com/ctalkington/node-archiver - for zip functionality
 
