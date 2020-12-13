@@ -1,3 +1,5 @@
+![Node.js Package](https://github.com/uxkjaer/nyc-middleware/workflows/Node.js%20Package/badge.svg)
+
 nyc-middleware
 ===================
 
